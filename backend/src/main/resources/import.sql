@@ -20,23 +20,9 @@ INSERT INTO tb_user_role (user_id, role_id) VALUES (6, 1);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (7, 1);
 
 
-INSERT INTO tb_team (name, user_id) VALUES ('Santander',2);
-INSERT INTO tb_team (name ,user_id) VALUES ('PicPay', 2);
-INSERT INTO tb_team (name, user_id) VALUES ('Bradesco', 2);
+INSERT INTO tb_team (name, manager_id) VALUES ('Santander',2);
+INSERT INTO tb_team (name ,manager_id) VALUES ('PicPay', 2);
+INSERT INTO tb_team (name, manager_id) VALUES ('Bradesco', 2);
 
-INSERT INTO tb_team_seller(team_id, user_id) VALUES (1,1); 
-INSERT INTO tb_team_seller(team_id, user_id) VALUES (2,4); 
-INSERT INTO tb_team_seller(team_id, user_id) VALUES (2,5); 
-INSERT INTO tb_team_seller(team_id, user_id) VALUES (3,6); 
-INSERT INTO tb_team_seller(team_id, user_id) VALUES (3,7); 
-
-
-INSERT INTO tb_sales(visited,deals,amount,date,user_id) VALUES (121,67,18196.0,'2022-06-16',1);
-INSERT INTO tb_sales(visited,deals,amount,date,user_id) VALUES (26,14,4255.0,'2022-06-14',1);
-INSERT INTO tb_sales(visited,deals,amount,date,user_id) VALUES (55,42,13249.0,'2022-06-14',1);
-INSERT INTO tb_sales(visited,deals,amount,date,user_id) VALUES (73,65,20751.0,'2022-06-10',1);
-INSERT INTO tb_sales(visited,deals,amount,date,user_id) VALUES (47,25,7318.0,'2022-06-04',1);
-INSERT INTO tb_sales(visited,deals,amount,date,user_id) VALUES (72,60,15608.0,'2022-06-03',1);
-INSERT INTO tb_sales(visited,deals,amount,date,user_id) VALUES (97,68,8901.0,'2022-06-03',1);
 
 

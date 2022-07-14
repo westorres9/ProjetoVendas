@@ -1,10 +1,8 @@
 package com.devsuperior.vendas.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -46,11 +44,8 @@ public class User implements UserDetails, Serializable {
         inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
     
-    @OneToMany(mappedBy = "seller")
-	private List<Sale> sales = new ArrayList<>();
-    
     @OneToMany(mappedBy = "sellers")
-	private List<Team> teams = new ArrayList<>();
+	private Set<Team> teams = new HashSet<>();
 
     public User(){
     }
@@ -107,9 +102,6 @@ public class User implements UserDetails, Serializable {
         return roles;
     }
 
-    public List<Sale> getSales() {
-		return sales;
-	}
 
 	@Override
     public boolean equals(Object o) {
