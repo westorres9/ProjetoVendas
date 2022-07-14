@@ -1,0 +1,8 @@
+.admin-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-container {
+    padding: 20px;
+}

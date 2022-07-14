@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 @Entity
 @Table(name = "tb_sales")
@@ -22,15 +24,20 @@ public class Sale implements Serializable{
 	private Double amount;
 	private LocalDate date;
 	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User seller;
+	
 	public Sale() {	
 	}
 
-	public Sale(Long id, Integer visited, Integer deals, Double amount, LocalDate date) {
+	public Sale(Long id, Integer visited, Integer deals, Double amount, LocalDate date, User seller) {
 		this.id = id;
 		this.visited = visited;
 		this.deals = deals;
 		this.amount = amount;
 		this.date = date;
+		this.seller = seller;
 	}
 
 	public Long getId() {
@@ -75,11 +82,17 @@ public class Sale implements Serializable{
 		return date;
 	}
 
-
 	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 
+	public User getSeller() {
+		return seller;
+	}
+
+	public void setSeller(User seller) {
+		this.seller = seller;
+	}
 
 	@Override
 	public boolean equals(Object obj) {

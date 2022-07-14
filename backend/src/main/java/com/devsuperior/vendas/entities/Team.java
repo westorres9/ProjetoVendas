@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 @Entity
 @Table(name = "tb_team")
@@ -27,8 +28,12 @@ public class Team implements Serializable{
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "tb_team_seller",
 			joinColumns = @JoinColumn(name = "team_id"),
-			inverseJoinColumns = @JoinColumn(name = "seller_id"))
-	private Set<Seller> sellers = new HashSet<>();
+			inverseJoinColumns = @JoinColumn(name = "user_id"))
+	private Set<User> sellers = new HashSet<>();
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User manager;
 	
 	public Team() {
 	}
@@ -54,8 +59,16 @@ public class Team implements Serializable{
 		this.name = name;
 	}
 
-	public Set<Seller> getSellers() {
+	public Set<User> getSellers() {
 		return sellers;
+	}
+
+	public User getManager() {
+		return manager;
+	}
+
+	public void setManager(User manager) {
+		this.manager = manager;
 	}
 
 	@Override
