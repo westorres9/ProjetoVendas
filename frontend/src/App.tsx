@@ -1,13 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import React from 'react';
+import 'assets/styles/custom.scss';
+import './App.css';
+import Navbar from 'components/Navbar';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <h1>Vendas</h1>
-  )
+    <>
+      <Navbar/>
+      <h1>Hello react</h1>
+    </>
+    
+  );
 }
 
-export default App
+export default App;
