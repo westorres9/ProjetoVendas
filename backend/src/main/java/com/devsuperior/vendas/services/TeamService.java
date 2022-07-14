@@ -12,8 +12,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.devsuperior.vendas.dto.TeamDTO;
+import com.devsuperior.vendas.dto.UserDTO;
 import com.devsuperior.vendas.entities.Team;
+import com.devsuperior.vendas.entities.User;
 import com.devsuperior.vendas.repositories.TeamRepository;
+import com.devsuperior.vendas.repositories.UserRepository;
 import com.devsuperior.vendas.services.exceptions.DatabaseException;
 import com.devsuperior.vendas.services.exceptions.ResourceNotFoundException;
 
@@ -22,6 +25,9 @@ public class TeamService {
 	
 	@Autowired
 	private TeamRepository repository;
+	
+	@Autowired
+	private UserRepository userRepository;
 	
 	@Transactional(readOnly = true)
 	public Page<TeamDTO> findAll(Pageable pageable) {
@@ -33,7 +39,7 @@ public class TeamService {
 	public TeamDTO findById(Long id) {
 		Optional<Team> obj = repository.findById(id);
 		Team entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity Not Found"));
-		return new TeamDTO(entity);
+		return new TeamDTO(entity, entity.getSellers());
 	}
 	
 	@Transactional
@@ -50,6 +56,11 @@ public class TeamService {
 			Team entity = repository.getOne(id);
 			entity.setName(dto.getName());
 			entity = repository.save(entity);
+			entity.getSellers().clear();
+			for(UserDTO sellerDto : dto.getSellers()) {
+				User seller = userRepository.getOne(sellerDto.getId());
+				entity.getSellers().add(seller);
+			}
 			return new TeamDTO(entity);
 		}
 		catch (EntityNotFoundException e) {
