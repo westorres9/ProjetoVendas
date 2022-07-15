@@ -31,8 +31,8 @@ public class UserController {
     private UserService service;
 
     @GetMapping
-    public ResponseEntity<Page<UserDTO>> findAll(Pageable pageable) {
-        Page<UserDTO> list = service.findAllPaged(pageable);
+    public ResponseEntity<Page<UserDTO>> findAll(Pageable pageable, Long id) {
+        Page<UserDTO> list = service.findAllPaged(pageable, id);
         return ResponseEntity.ok().body(list);
     }
 

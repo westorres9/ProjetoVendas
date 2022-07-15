@@ -35,18 +35,23 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private UserRepository repository;
+    
+    @Autowired
+    private AuthService authService;
 
     @Autowired
     private RoleRepository roleRepository;
 
     @Transactional(readOnly = true)
-    public Page<UserDTO> findAllPaged(Pageable pageable) {
+    public Page<UserDTO> findAllPaged(Pageable pageable, Long id) {
+    	authService.validateAdmin(id);
         Page<User> page = repository.findAll(pageable);
         return page.map(x -> new UserDTO(x));
     }
 
     @Transactional(readOnly = true)
     public UserDTO findById(Long id) {
+    	authService.validateSelfOrAdmin(id);
         Optional<User> obj = repository.findById(id);
         User entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not Found"));
         return new UserDTO(entity);
