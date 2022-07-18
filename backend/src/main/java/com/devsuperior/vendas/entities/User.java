@@ -46,6 +46,9 @@ public class User implements UserDetails, Serializable {
     
     @OneToMany(mappedBy = "sellers")
 	private Set<Team> teams = new HashSet<>();
+    
+    @OneToMany(mappedBy = "seller")
+    private Set<Sale> sales = new HashSet<>();
 
     public User(){
     }

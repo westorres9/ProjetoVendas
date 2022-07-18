@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.devsuperior.vendas.dto.TeamDTO;
+import com.devsuperior.vendas.dto.TeamInsertDTO;
 import com.devsuperior.vendas.entities.Team;
 import com.devsuperior.vendas.entities.User;
 import com.devsuperior.vendas.repositories.TeamRepository;
@@ -36,6 +37,21 @@ public class TeamService {
 			throw new UnauthorizedException("Unauthorized user");
 		}
 		
+	}
+	
+	@Transactional
+	public TeamDTO insert(TeamInsertDTO dto) {
+		User user = authService.authenticated();
+		if(user.hasRole("ROLE_ADMIN")) {
+			Team entity = new Team();
+			entity.setName(dto.getName());
+			entity.setManager(dto.getManager());
+			entity = repository.save(entity);
+			return new TeamDTO(entity);
+		}
+		else {
+			throw new UnauthorizedException("Unauthorized user");
+		}
 	}
 
 }

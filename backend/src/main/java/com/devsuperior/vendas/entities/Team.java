@@ -28,11 +28,11 @@ public class Team implements Serializable{
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "tb_team_seller",
 			joinColumns = @JoinColumn(name = "team_id"),
-			inverseJoinColumns = @JoinColumn(name = "seller_id"))
+			inverseJoinColumns = @JoinColumn(name = "user_seller_id"))
 	private Set<User> sellers = new HashSet<>();
 	
 	@ManyToOne
-	@JoinColumn(name = "manager_id")
+	@JoinColumn(name = "user_manager_id")
 	private User manager;
 	
 	public Team() {
