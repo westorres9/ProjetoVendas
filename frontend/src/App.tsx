@@ -1,16 +1,11 @@
 import React from 'react';
-import 'assets/styles/custom.scss';
+import './assets/styles/custom.scss';
 import './App.css';
-import Navbar from 'components/Navbar';
-import Admin from 'pages/Admin';
+import Routes from 'Routes';
 
 function App() {
   return (
-    <>
-      <Navbar/>
-      <Admin/>
-    </>
-    
+    <Routes/>
   );
 }
 
