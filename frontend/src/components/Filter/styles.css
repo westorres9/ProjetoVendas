@@ -6,3 +6,19 @@
     align-items: center;
     padding-left: 30px;
 }
+
+.filter-input {
+    background-color: var(--secondary-color);
+    color: var( --grey-light-50-color);
+    font-size: 18px;
+    height: 45px;
+    padding: 0px 20px;
+    border: 1px solid var(--grey-ligth-100-color);
+    width: 250px;
+    border-radius: 5px;
+}
+
+.filter-input ::placeholder {
+    color: var( --grey-ligth-50-color);
+    font-size: 18px;
+}
