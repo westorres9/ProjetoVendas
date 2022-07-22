@@ -1,6 +1,7 @@
 
 import { Route, Switch } from 'react-router-dom';
 import Navbar from './Navbar';
+import Sales from './Sales';
 import './styles.css';
 
 const Admin = () => {
@@ -10,7 +11,7 @@ const Admin = () => {
       <div className="admin-content">
          <Switch>
           <Route path="/admin/sales">
-            <h1>Vendas</h1>
+            <Sales/>
           </Route>
           <Route path="/admin/sellers">
             <h1>Vendedores</h1>

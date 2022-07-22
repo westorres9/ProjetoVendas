@@ -1,3 +1,5 @@
+import './styles.css';
+
 const Navbar = () => {
   return (
     <nav className="navbar bg-primary">

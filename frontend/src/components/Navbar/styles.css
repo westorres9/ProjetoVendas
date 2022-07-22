@@ -1,8 +1,9 @@
 .navbar {
     height: 70px;
+    border-bottom: 1px solid #e1e1e1;
 }
 
-.navbar-brand {
+.navbar-brand, .navbar-brand:hover {
     color: #FFF;
     font-size: 18px;
     font-weight: bold;
